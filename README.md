@@ -1,4 +1,4 @@
-The data for this demo was obtained from [Gun Violence Archive](http://www.gunviolencearchive.org/reports/mass-shootings/2015)
+###The data for this demo was obtained from [Gun Violence Archive](http://www.gunviolencearchive.org/reports/mass-shootings/2015)
 
 Resources
 ---------
