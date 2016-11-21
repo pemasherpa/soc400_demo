@@ -1,3 +1,5 @@
+
+
 Resources
 ---------
 
@@ -11,32 +13,6 @@ The following resources may be helpful for getting started with your project. As
 -   Chart layout [documentation](https://plot.ly/r/reference/#layout)
 -   RMarkdown [documentation](http://rmarkdown.rstudio.com/)
 
-
-Using R Markdown
-----------------
-
-As a refresher from the previous assignment, you can embed an R code chunk by wrapping some R code with three back ticks (```` ``` ````) at the start and end of a code block.
-
-<pre>
-  ```&#123;r}
-  x <- 1
-  ```
-</pre>
-If you don't want the R code to appear in your document, you can simply include the `echo=FALSE` parameter.
-
-<pre>
-  ```&#123;r, echo=FALSE}
-  # This would not be printed to your Markdown file once rendered.
-  x <- 1
-  ```
-</pre>
-Conversely, if you would like to show R code, but not actually execute it, the `eval=FALSE` parameter prevents the R code from actually running.
-<pre>
-  ```&#123;r eval=FALSE}
-  # The variable x would not be created, but this would appear in your Markdown document for your user to see.
-  x <- 1
-  ```
-</pre>
 
 Create a gh-pages branch
 ------------------------
