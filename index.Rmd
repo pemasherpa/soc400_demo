@@ -1,0 +1,87 @@
+---
+title: "<center>Mass Shootings in US</center>"
+output: html_document
+---
+
+```{r, echo = FALSE, message = FALSE} 
+library(knitr)
+library(plotly)
+library(dplyr)
+source('analysis.R')
+```
+
+<body>
+<p>
+Over the years mass shootings has been a huge issue in the US. In 2015, a total of `r dead` have been killed, `r injured` injured. The most affected state was `r most_affected_state` due to the recent San Bernardino shooting that killed 16 and injured 19 people. The most affected city was `r most_affected_city`.
+
+
+``` {r, echo = FALSE, message = FALSE}
+# Clean up the table labels
+names(info_table)[names(info_table) == 'state'] <- "State"
+names(info_table)[names(info_table) == "Total_Casualty"] <- "Total Casualty"
+```
+
+Here is a table with information on each state:
+`r kable(info_table, format = 'markdown', align = NULL)`
+</p>
+</body>
+
+<header><h3><b> San Bernardino Attack</b></h3></header>
+<p>
+Recently a brutal and largest shooting of the year occured in `r selected_city`. It happened in `r selected_date[2]`, a total of `r selected_injured[1]` were injured and `r selected_killed[1]` killed. With the ongoing controversy and issue of immigrants and ISIS attacks around the world this incident was very significant. It is still relevant now as Apple fights back the governments orders to unlock the shooters iPhone which gets into the issue of data security.
+
+<i>For more information on the current issue of the unlocking of the shooters iPhones click <a href ="http://www.cnn.com/2016/02/16/us/san-bernardino-shooter-phone-apple/">here</a></i>
+</p>
+
+<header><h3><b> Interactive Map</h3></b></header>
+Below is an interactive bubble map that displays the shooting distribution in the United States:
+
+<center>
+```{r, echo = FALSE, message = FALSE}
+
+data$hover <- paste("City:", data$city, "Date:", data$date, "Injured:", data$injured, "Killed:", data$killed)
+
+g <- list(
+  scope = 'usa', 
+  projection = list(type = 'albers usa'),
+  showland = FALSE,
+  landcolor = toRGB("gray85"), 
+  subunitwidth = .5,
+  countrywidth = 0,
+  subunitcolor = toRGB("gray85"), 
+  countrycolor = toRGB('gray85')
+)
+
+m <- list(colorbar = list(title = "# of people killed"), size = data$total*1.5, colorscale = "Reds")
+
+plot_ly(data, 
+        lon = lng, 
+        lat = lat, 
+        text = hover,
+        hoverinfo = 'text',
+        color = total,
+        marker = m,
+        type = 'scattergeo', 
+        locationmode = 'USA-states'
+) %>%
+  layout(title = 'Mass shootings in US (2015)', geo = g) 
+
+```
+</center>
+
+An interactive bubble graph showing each state and the total number of people killed.
+
+<center>
+```{r, echo = FALSE, message = FALSE}
+plot_ly(data,
+        x = state.abb,
+        y = killed,
+        size = killed,
+        opacity = killed,
+        text = hover,
+        color = killed,
+        mode = "markers")%>% 
+  layout(title = '2015 Mass Shootings')
+
+```
+</center>
