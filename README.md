@@ -3,8 +3,6 @@
 Resources
 ---------
 
-The following resources may be helpful for getting started with your project. As always, google and stackoverflow will likely be needed to supplement this information when you run into specific problems:
-
 -   R plotly graphics [reference](https://plot.ly/r/reference/)
 -   Bubble map [example](https://plot.ly/r/bubble-maps/)
 -   Bubble map [documentation](https://plot.ly/r/reference/#scattergeo)
@@ -16,8 +14,6 @@ The following resources may be helpful for getting started with your project. As
 
 Create a gh-pages branch
 ------------------------
-
-Similarly to last week, we'll create a `gh-pages` branch so that our final product can be posted on the web. Here's the syntax you'll want to use in your terminal:
 
 <pre>
 # Get into your repository
